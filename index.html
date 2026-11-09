@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SGE Digital — Secretaria Escolar</title>
+<script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.js"></script>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- ================= LOGIN ================= -->
+<div id="login" class="login-wrap">
+  <div class="login-card">
+    <div class="login-logo">SGE</div>
+    <h1>SGE Digital</h1>
+    <p class="sub">Sistema de Gestão e Emissão de Documentos Escolares · Secretaria</p>
+    <div id="loginErr"></div>
+    <div style="margin-bottom:14px"><label>E-mail institucional</label><input id="lgEmail" type="email" placeholder="secretaria@escola.edu.br"></div>
+    <div style="margin-bottom:18px"><label>Senha</label><input id="lgPass" type="password" placeholder="••••••" value="123456"></div>
+    <button class="btn full" onclick="doLogin()">Entrar no sistema</button>
+    <div class="demo-box">
+      <div style="font-size:11px;font-weight:700;color:var(--mut);text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px">Acesso rápido de demonstração</div>
+      <div class="demo-row"><span>Secretaria · ana.secretaria</span><button onclick="quick('secretaria')">Entrar</button></div>
+      <div class="demo-row"><span>Gestor / Direção · maria.diretora</span><button onclick="quick('gestor')">Entrar</button></div>
+      <div class="demo-row"><span>Administrador · ti.suporte</span><button onclick="quick('admin')">Entrar</button></div>
+      <div class="demo-row"><span>Estudante / Egresso · ana.lima</span><button onclick="quick('aluno')">Entrar</button></div>
+      <div class="rule">Perfis distintos alteram permissões: emissão, aprovação, auditoria e configurações.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ================= APP ================= -->
+<div id="app" class="app hidden">
+  <aside class="side">
+    <div class="side-head">
+      <div class="brand">
+        <div class="logo">SGE</div>
+        <div class="bt"><b>SGE Digital</b><small id="sideInst">Secretaria</small></div>
+      </div>
+    </div>
+    <nav id="nav"></nav>
+    <div class="side-foot">
+      <div class="who" id="uNome">—</div>
+      <div class="role" id="uPerfil">—</div>
+      <button onclick="doLogout()">Sair do sistema</button>
+    </div>
+  </aside>
+  <main class="main"><div id="view"></div></main>
+</div>
+
+<div id="modal" class="modal hidden" onclick="if(event.target===this)closeModal()">
+  <div class="modal-box">
+    <div class="modal-head"><h3 id="modalTitle">Título</h3><button class="x" onclick="closeModal()">✕</button></div>
+    <div class="modal-body" id="modalBody"></div>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
